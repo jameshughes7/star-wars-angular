@@ -17,9 +17,13 @@ import { HeaderComponent } from './header/header.component';
 // each object represents a route
 // each integration of a route has a path
 // and a component that gets loaded if that part is what you're visiting
-const routes: Routes = [
-  { path: '', component: TabsComponent},
-  { path: 'new-character', component: CreateCharacterComponent }
+const routes = [
+  { path: 'characters', component: TabsComponent, children: [
+    { path: '', redirectTo: 'all', pathMatch: 'full' },
+    { path: ':side', component: ListComponent }
+  ] },
+  { path: 'new-character', component: CreateCharacterComponent },
+  { path: '**', redirectTo: '/characters' }
 ];
 
 
