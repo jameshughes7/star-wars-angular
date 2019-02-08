@@ -5,7 +5,12 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
+      <!--removing hardcoded <app-tabs> with appropriate component depending on route
       <app-tabs></app-tabs>
+      router outlet is a directive provided by the router module
+      So for the forRoot(routes) referenced in app.module.ts,
+      in the place where router-outlet is declared load them in the app component-->
+        <router-outlet></router-outlet>
     </div>
   </div>
 </div>
