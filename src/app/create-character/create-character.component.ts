@@ -14,6 +14,7 @@ export class CreateCharacterComponent implements OnInit {
   ];
 
   swService: StarWarsService;
+  defaultName = 'Obi-Wan';
 
   constructor(swService: StarWarsService) {
     this.swService = swService;
@@ -24,7 +25,9 @@ export class CreateCharacterComponent implements OnInit {
   }
 
   onSubmit(submittedForm) {
-    console.log(submittedForm.value);
+    if (submittedForm.invalid) {
+      return submittedForm;
+    }
     this.swService.addCharacter(submittedForm.value.name, submittedForm.value.side);
   }
 }
