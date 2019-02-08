@@ -14,6 +14,9 @@ export class StarWarsService {
     this.logService = logService;
       }
 
+  // slice() and filter() gives us a new copy of the array
+  // because we don't want to access the original array
+  // which is marked as private from some component in out application
   getCharacters(chosenList) {
     if (chosenList === 'all') {
       return this.characters.slice();

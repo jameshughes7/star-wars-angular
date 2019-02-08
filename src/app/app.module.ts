@@ -17,12 +17,20 @@ import { HeaderComponent } from './header/header.component';
 // each object represents a route
 // each integration of a route has a path
 // and a component that gets loaded if that part is what you're visiting
+
+// child routes can be registered to TabsComponent
+// TabsComponent has all the tabs and renders the list in the end
+// ListComponent stays constant but we can register different child roles
+// for different content types we want to load
+
+// :side path catches the dynamic value of the path (Light, Dark ,All)
 const routes = [
   { path: 'characters', component: TabsComponent, children: [
     { path: '', redirectTo: 'all', pathMatch: 'full' },
     { path: ':side', component: ListComponent }
   ] },
   { path: 'new-character', component: CreateCharacterComponent },
+  // wilcard to catch unnamed routes needs to be last element in array
   { path: '**', redirectTo: '/characters' }
 ];
 
