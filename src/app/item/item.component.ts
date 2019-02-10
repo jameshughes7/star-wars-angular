@@ -6,6 +6,8 @@ import { StarWarsService } from '../star-wars.service';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
 })
+
+// responsible for changing the side of a character
 export class ItemComponent implements OnInit {
   @Input() character;
   swService: StarWarsService;
