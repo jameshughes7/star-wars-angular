@@ -30,6 +30,7 @@ export class ListComponent implements OnInit, OnDestroy {
   // observables wrap asynchronous events
   // so we can subscribe to these observables to react to these events
   ngOnInit() {
+    this.swService.fetchCharacters();
     this.activatedRoute.params.subscribe(
       (params) => {
         this.characters = this.swService.getCharacters(params.side);

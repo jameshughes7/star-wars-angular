@@ -1,7 +1,8 @@
 import { LogService } from './log.service';
-
+import { Http, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject'
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class StarWarsService {
@@ -13,10 +14,31 @@ export class StarWarsService {
   // Subject is special objext provided by rxjs package
   // Similar to an Event Emitter (can emit an event and subscribe to it)
   charactersChanged = new Subject<void>();
+  http: Http;
 
-  constructor(logService: LogService) {
+  constructor(logService: LogService, http: Http) {
     this.logService = logService;
-      }
+    this.http = http;
+  }
+
+  // get request on its own won't send request, just sets it up
+  // Angular uses observables to do this so need to use subscribe
+  // response.json converts json to javascript object
+  fetchCharacters() {
+    this.http.get('https://swapi.co/api/people/')
+    .map((response: Response) => {
+      const data = response.json();
+      const extractedChars = data.results;
+      const chars = extractedChars.map((char) => {
+        return {name: char.name, side: ''};
+      });
+      return chars;
+    })
+    .subscribe((data) => {
+      console.log(data);
+      this.characters = data;
+    });
+  }
 
   // slice() and filter() gives us a new copy of the array
   // because we don't want to access the original array

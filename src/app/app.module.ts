@@ -1,7 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { TabsComponent } from './tabs/tabs.component';
@@ -49,7 +50,8 @@ const routes = [
     FormsModule,
     // forRoot sets up root routing for the application
     // forRoot(routes) registers our routes in the RouterModule
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpModule
   ],
   providers: [StarWarsService, LogService],
   bootstrap: [AppComponent]
