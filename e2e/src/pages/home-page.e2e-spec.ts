@@ -29,14 +29,4 @@ describe(' Home Page', () => {
         button.click();
         expect(browser.driver.getCurrentUrl()).toContain('/album');
     });
-
-    // it('Should find the learn more button', () => {
-    //     expect(homePage.getLearnMoreButton().getText()).toEqual('Learn more');
-    // });
-
-    // it('Should redirect to the album page when learn more is clicked', () => {
-    //     const learnMore = homePage.getLearnMoreButton();
-    //     learnMore.click();
-    //     expect(browser.driver.getCurrentUrl()).toContain('/album');
-    // });
 });
